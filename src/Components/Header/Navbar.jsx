@@ -42,7 +42,7 @@ const Navbar = () => {
               {link}
             </ul>
           </div>
-          <div className="lg:text-4xl  md:text-3xl text-2xl font-thin">
+          <div className="lg:text-4xl  md:text-3xl text-2xl font-light">
             GLIDE<span className="font-semibold">FEET</span>
           </div>
         </div>

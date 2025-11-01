@@ -26,7 +26,7 @@ const Hero = () => {
                 </span>
               </p>{" "}
               <br />
-              <Link to="/shop" className="btn md:mt-3 btn-neutral">Shop Now</Link>
+              <Link to="/shop" className="btn md:mt-3 btn-neutral  ">Shop Now</Link>
             </div>
           </div>
           <div id="item2" className="carousel-item w-full relative">

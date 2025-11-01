@@ -23,6 +23,10 @@ export const router = createBrowserRouter([
         path: "/shop",
         Component: Shop,
       },
+      {
+        path: "/shop/:cat",
+        Component: Shop,
+      },
     ],
   },
 ]);
