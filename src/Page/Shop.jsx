@@ -48,9 +48,9 @@ const Shop = () => {
     { name: "Men", path: "men" },
     { name: "Women", path: "women" },
     { name: "Kids", path: "kids" },
-    { name: "Sports", path: "Sports" },
-    { name: "Loafer", path: "Loafer" },
-    { name: "Formal", path: "Formal" },
+    { name: "Sports", path: "sports" },
+    { name: "Loafer", path: "loafer" },
+    { name: "Formal", path: "formal" },
   ];
 
   // === Aside ===
