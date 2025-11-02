@@ -3,6 +3,9 @@ import Layout from "../Layout/Layout";
 import Home from "../Page/Home";
 import About from "../Page/About";
 import Shop from "../Page/Shop";
+import Blog from "../Page/Blog";
+import ProductDetails from "../Components/ProductCard/ProductDetails";
+import SearchResult from "../Components/SearchSection/SearchResult";
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +29,19 @@ export const router = createBrowserRouter([
       {
         path: "/shop/:cat",
         Component: Shop,
+      },
+      {
+        path: "/details/:id",
+        loader: () => fetch("/product.json"),
+        Component: ProductDetails,
+      },
+      {
+        path: "/blog",
+        Component: Blog,
+      },
+      {
+        path: "/search",
+        Component: SearchResult,
       },
     ],
   },

@@ -27,7 +27,7 @@ const News = () => {
     },
   ];
   return (
-    <div className="w-11/12 mx-auto mt-10">
+    <div className="w-11/12 mx-auto my-10">
       <div className="flex items-center">
         <h1 className="text-xl md:text-2xl lg:text-4xl font-semibold mb-3 flex items-center gap-3">
           <CgStyle /> LATEST NEWS
@@ -37,12 +37,14 @@ const News = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {news.map((n) => (
-          <div>
+          <div className="bg-base-200 shadow-md">
             <img src={n.image} alt="" />
-            <h1 className="hover:underline text-xl lg:text-2xl font-semibold mb-1 mt-2">
-              {n.name}
-            </h1>
-            <p>{n.news}</p>
+            <div className="p-4">
+              <h1 className="hover:underline text-xl lg:text-2xl font-semibold mb-1 mt-2">
+                {n.name}
+              </h1>
+              <p>{n.news}</p>
+            </div>
           </div>
         ))}
       </div>

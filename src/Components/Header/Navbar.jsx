@@ -1,16 +1,19 @@
 import React from "react";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { NavLink } from "react-router";
+import SearchBar from "../SearchSection/SearchBar";
 
 const Navbar = () => {
-    const link = <>
-    <NavLink to="/">HOME</NavLink>
-    <NavLink to="/shop">SHOP</NavLink>
-    <NavLink to="/about">ABOUT</NavLink>
-    <NavLink to="/blog">BLOG</NavLink>
+  const link = (
+    <>
+      <NavLink to="/">HOME</NavLink>
+      <NavLink to="/shop">SHOP</NavLink>
+      <NavLink to="/about">ABOUT</NavLink>
+      <NavLink to="/blog">BLOG</NavLink>
     </>
+  );
   return (
-    <div className="bg-base-100 shadow-sm">
+    <div className="bg-base-100 shadow-sm sticky z-50 top-0">
       <div className="navbar p-0">
         <div className="navbar-start pl-5">
           <div className="dropdown sm:hidden">
@@ -46,18 +49,14 @@ const Navbar = () => {
             GLIDE<span className="font-semibold">FEET</span>
           </div>
         </div>
-        
+
         {/* === END === */}
         <div className="navbar-end pr-5">
-            
-
           <div className="flex gap-2 items-center">
-            <div className="navbar-center sm:flex gap-5 text-2xl mr-10 hidden">{link}</div>
-            <input
-              type="text"
-              placeholder="Search"
-              className="input input-bordered w-24 md:w-auto"
-            />
+            <div className="navbar-center sm:flex gap-5 text-2xl mr-10 hidden">
+              {link}
+            </div>
+            <SearchBar />
 
             <div>
               <MdOutlineShoppingCart size={34} />

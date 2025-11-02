@@ -72,7 +72,7 @@ const Shop = () => {
   </div>;
 
   return (
-    <div>
+    <div className="mb-10">
       <div className="mb-5 p-5 bg-base-300 text-center">
         <h1 className="text-2xl font-semibold lg:text-4xl flex items-center justify-center gap-3"><CgStyle /> Quick Look <CgStyle /></h1>
         <p className="text-lg lg:text-xl">Get a sneak peek at our styles without leaving the page.</p>
