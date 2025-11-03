@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router";
 import ProductCard from "../Components/ProductCard/ProductCard";
 import LeftAside from "../Components/ProductCard/LeftAside";
 import { CgStyle } from "react-icons/cg";
+import SearchBar from "../Components/SearchSection/SearchBar";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
@@ -73,13 +74,20 @@ const Shop = () => {
 
   return (
     <div className="mb-10">
-      <div className="mb-5 p-5 bg-base-300 text-center">
-        <h1 className="text-2xl font-semibold lg:text-4xl flex items-center justify-center gap-3"><CgStyle /> Quick Look <CgStyle /></h1>
-        <p className="text-lg lg:text-xl">Get a sneak peek at our styles without leaving the page.</p>
+      <div className=" p-5 bg-base-300 flex flex-col justify-center items-center mb-10">
+        <h1 className="text-2xl font-semibold lg:text-4xl flex items-center justify-center gap-3">
+          <CgStyle /> Quick Look <CgStyle />
+        </h1>
+        <p className="text-lg lg:text-xl">
+          Get a sneak peek at our styles without leaving the page.
+        </p>
+        {/* <div className="absolute top-27 md:top-20 lg:top-22 ">
+          <SearchBar />
+        </div> */}
       </div>
 
       {/* Cards */}
-      <section className="sm:grid grid-cols-12 justify-self-center gap-5 lg:gap-10">
+      <section className="sm:grid grid-cols-12 justify-self-center  gap-5 lg:gap-10">
         <aside className="col-span-3 hidden md:inline-block ">
           <LeftAside
             colorFilter={colorFilter}
@@ -114,7 +122,7 @@ const Shop = () => {
 
           {/* === Card === */}
           {filteredProducts.length > 1 ? (
-            <div className="grid grid-cols-2 md:grid-cols-2 justify-self-center  lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-2 justify-self-center  lg:grid-cols-4 md:gap-6 gap-3">
               {filteredProducts.map((product) => (
                 <ProductCard product={product} />
               ))}

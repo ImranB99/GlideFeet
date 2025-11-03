@@ -21,7 +21,7 @@ const SearchBar = () => {
           onChange={(e) => setQuery(e.target.value)}
           type="search"
           name="Search"
-          className="input w-20 md:w-36 lg:w-48"
+          className="input w-full md:w-42 lg:w-full"
           placeholder="Search"
         />
       </form>

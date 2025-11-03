@@ -11,8 +11,10 @@ const SearchResult = () => {
       .then((res) => res.json())
       .then((data) => {
         if (query) {
-          const filtered = data.filter((item) =>
-            item.Name.toLowerCase().includes(query.toLowerCase())
+          const filtered = data.filter(
+            (item) =>
+              item.Name.toLowerCase().includes(query.toLowerCase()) ||
+              item.Category.toLowerCase().includes(query.toLowerCase())
           );
           setProducts(filtered);
         } else {
@@ -25,7 +27,7 @@ const SearchResult = () => {
     <div>
       <h2 className="text-lx">Search Result for "{query}"</h2>
       {products.length > 0 ? (
-        <div className=" grid grid-cols-6 justify-self-center gap-5 mt-2">
+        <div className=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 justify-self-center md:gap-5 gap-3 mt-2">
           {products.map((product) => (
             <Link to={`/details/${product.id}`}>
               <img

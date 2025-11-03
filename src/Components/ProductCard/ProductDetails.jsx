@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { MdOutlinePreview } from "react-icons/md";
 import { useLoaderData, useParams } from "react-router";
 import BestSelling from "./../BestSelling/BestSelling";
+import { CartContext } from "../../Context/Context";
 
 const ProductDetails = () => {
   const [product, setProduct] = useState("");
   const [count, setCount] = useState(1);
+  const { addToCart } = useContext(CartContext);
+
   const data = useLoaderData();
   const { id } = useParams();
 
@@ -22,6 +25,16 @@ const ProductDetails = () => {
 
   const decreaseCount = () => {
     if (count > 1) setCount(count - 1);
+  };
+
+  const handleAdd = () => {
+    addToCart({
+      id: product.id,
+      name: product.Name,
+      price: product.DiscountPrice,
+      image: product.Image,
+      quantity: count,
+    });
   };
   return (
     <div className="w-11/12 mx-auto my-5">
@@ -96,15 +109,14 @@ const ProductDetails = () => {
 
           {/* Button */}
           <div className="flex gap-5 ">
-            <button className="btn btn-outline">ADD TO CART</button>
+            <button onClick={handleAdd} className="btn btn-outline">ADD TO CART</button>
             <button className="btn btn-neutral ">BUY NOW</button>
           </div>
         </div>
-        
       </div>
       <div>
-          <BestSelling />
-        </div>
+        <BestSelling />
+      </div>
     </div>
   );
 };

@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { MdOutlineShoppingCart } from "react-icons/md";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import SearchBar from "../SearchSection/SearchBar";
+import ThemeToggle from "../ThemeTogol";
+import { CartContext } from "../../Context/Context";
+import CartDrawer from "../ProductCard/CartDrawer";
 
 const Navbar = () => {
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const { cart } = useContext(CartContext); // cart data নাও context থেকে
+
   const link = (
     <>
       <NavLink to="/">HOME</NavLink>
@@ -58,9 +64,14 @@ const Navbar = () => {
             </div>
             <SearchBar />
 
-            <div>
+            <button className="relative" onClick={() => setIsCartOpen(true)}>
               <MdOutlineShoppingCart size={34} />
-            </div>
+              {cart.length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                  {cart.length}
+                </span>
+              )}
+            </button>
             <div className="dropdown dropdown-end">
               <div
                 tabIndex={0}
@@ -76,25 +87,28 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex="-1"
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                className="menu menu-sm  dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow space-y-2"
               >
-                <li>
-                  <a className="justify-between">
+                <li className="bg-base-300">
+                  <a className="justify-between font-semibold">
                     Profile
-                    <span className="badge">New</span>
+                    <span className="badge badge-neutral">New</span>
                   </a>
                 </li>
-                <li>
-                  <a>Settings</a>
+                <li className="bg-base-300">
+                  <ThemeToggle />
                 </li>
-                <li>
-                  <a>Logout</a>
-                </li>
+                <button className="btn btn-neutral">Logout</button>
               </ul>
             </div>
           </div>
         </div>
       </div>
+      <CartDrawer
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(false)}
+        cartItems={cart}
+      />
     </div>
   );
 };

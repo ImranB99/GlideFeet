@@ -6,6 +6,7 @@ import Shop from "../Page/Shop";
 import Blog from "../Page/Blog";
 import ProductDetails from "../Components/ProductCard/ProductDetails";
 import SearchResult from "../Components/SearchSection/SearchResult";
+import Cart from "../Components/ProductCard/Cart";
 
 export const router = createBrowserRouter([
   {
@@ -42,7 +43,10 @@ export const router = createBrowserRouter([
       {
         path: "/search",
         Component: SearchResult,
-      },
+      },{
+        path:"/cart",
+        Component:Cart
+      }
     ],
   },
 ]);

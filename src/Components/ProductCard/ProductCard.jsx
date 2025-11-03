@@ -14,7 +14,7 @@ const ProductCard = ({ product }) => {
       <h2>{Name}</h2>
       <div className="flex gap-5">
         <del>৳ {OfficialPrice}</del>
-        <p className="text-2xl">৳ {DiscountPrice}</p>
+        <p className="md:text-2xl text-lg">৳ {DiscountPrice}</p>
       </div>
     </Link>
   );
