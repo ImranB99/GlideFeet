@@ -33,6 +33,28 @@ const CartProvider = ({ children }) => {
 
     setCart(updated);
   };
+  
+  // 🔺 Increase quantity
+  const increaseQty = (id) => {
+    setCart((prev) =>
+      prev.map((p) =>
+        p.id === id && p.quantity < 10
+          ? { ...p, quantity: p.quantity + 1 }
+          : p
+      )
+    );
+  };
+
+  // 🔻 Decrease quantity
+  const decreaseQty = (id) => {
+    setCart((prev) =>
+      prev.map((p) =>
+        p.id === id && p.quantity > 1
+          ? { ...p, quantity: p.quantity - 1 }
+          : p
+      )
+    );
+  };
 
   // Remove item
   const removeFromCart = (id) => {
@@ -45,9 +67,19 @@ const CartProvider = ({ children }) => {
     setCart([]);
   };
 
+   // 💰 Total price
+  const totalPrice = cart.reduce(
+    (acc, item) => acc + item.quantity * Number(item.DiscountPrice || item.price || 0),
+    0
+  );
+
+  // 💯 Total quantity
+const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, clearCart }}
+      value={{ cart, addToCart, removeFromCart, clearCart,increaseQty,decreaseQty ,totalPrice,totalQuantity}}
     >
       {children}
     </CartContext.Provider>

@@ -96,7 +96,7 @@ const Shop = () => {
         </aside>
         <main className="col-span-9">
           {/* === Buttons === */}
-          <div className="flex flex-wrap justify-center gap-3 md:mb-6">
+          <div className="flex flex-wrap justify-center gap-3 mb-6">
             {categories.map((c) => (
               <button
                 key={c.path}
@@ -113,16 +113,16 @@ const Shop = () => {
           </div>
 
           {/* === Filter For small Device === */}
-          <div className="sm:hidden">
+          {/* <div className="md:hidden">
             <LeftAside
               colorFilter={colorFilter}
               setColorFilter={setColorFilter}
             />
-          </div>
+          </div> */}
 
           {/* === Card === */}
           {filteredProducts.length > 1 ? (
-            <div className="grid grid-cols-2 md:grid-cols-2 justify-self-center  lg:grid-cols-4 md:gap-6 gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-2   justify-self-center  lg:grid-cols-4 md:gap-6 gap-3">
               {filteredProducts.map((product) => (
                 <ProductCard product={product} />
               ))}

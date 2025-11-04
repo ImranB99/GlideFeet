@@ -7,8 +7,8 @@ import { CartContext } from "../../Context/Context";
 import CartDrawer from "../ProductCard/CartDrawer";
 
 const Navbar = () => {
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const { cart } = useContext(CartContext); // cart data নাও context থেকে
+   const [isCartOpen, setIsCartOpen] = useState(false);
+    const { totalQuantity } = useContext(CartContext);
 
   const link = (
     <>
@@ -66,11 +66,13 @@ const Navbar = () => {
 
             <button className="relative" onClick={() => setIsCartOpen(true)}>
               <MdOutlineShoppingCart size={34} />
-              {cart.length > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-                  {cart.length}
-                </span>
-              )}
+
+              {/* ✅ Cart count badge */}
+        {totalQuantity > 0 && (
+          <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center">
+            {totalQuantity}
+          </span>
+        )}
             </button>
             <div className="dropdown dropdown-end">
               <div
@@ -104,11 +106,9 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <CartDrawer
-        isOpen={isCartOpen}
-        onClose={() => setIsCartOpen(false)}
-        cartItems={cart}
-      />
+      {isCartOpen && (
+        <CartDrawer onClose={() => setIsCartOpen(false)} />
+      )}
     </div>
   );
 };

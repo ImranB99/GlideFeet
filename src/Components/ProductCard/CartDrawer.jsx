@@ -1,72 +1,118 @@
-import { useContext } from "react";
-import { FaTimes } from "react-icons/fa";
-import { MdDeleteForever } from "react-icons/md";
+import React, { useContext } from "react";
+
+import { IoClose } from "react-icons/io5";
 import { CartContext } from "../../Context/Context";
+import { MdOutlineDeleteForever } from "react-icons/md";
 
-const CartDrawer = ({ isOpen, onClose, cartItems }) => {
-  const { cart, removeFromCart, clearCart } = useContext(CartContext);
+const CartDrawer = ({ onClose }) => {
+  const { cart, removeFromCart, increaseQty, decreaseQty, totalPrice } =
+    useContext(CartContext);
 
-  const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  // const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
   return (
     <>
-      {/* Background Overlay */}
+      {/* 🔹 Background overlay with blur */}
       <div
-        className={`fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300 z-40 ${
-          isOpen ? "opacity-100 visible" : "opacity-0 invisible"
-        }`}
+        className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm"
         onClick={onClose}
       ></div>
 
-      {/* Drawer Panel */}
-      <div
-        className={`fixed top-0 right-0 h-full w-80 bg-white shadow-2xl transform transition-transform duration-300 z-50 
-        ${isOpen ? "translate-x-0" : "translate-x-full"}`}
-      >
+      {/* 🔹 Drawer */}
+      <div className="fixed top-0 right-0 w-80 h-full bg-base-100 shadow-2xl z-50 transform transition-transform duration-300 ease-in-out">
+        {/* Header */}
         <div className="flex justify-between items-center p-4 border-b">
-          <h2 className="text-lg font-semibold">Your Cart</h2>
+          <h2 className="text-lg font-semibold">🛒 Your Cart</h2>
           <button onClick={onClose}>
-            <FaTimes className="w-5 h-5 text-gray-700" />
+            <IoClose className="text-2xl hover:text-red-500" />
           </button>
         </div>
 
-        <div className="p-4 space-y-4 overflow-y-auto h-[calc(100%-4rem)]">
-          {cartItems.length > 0 ? (
-            cartItems.map((item) => (
-              <div
-                key={item.id}
-                className="flex items-center gap-3 border-b pb-2"
-              >
+        {/* Cart Items */}
+        <div className="p-4 space-y-3 overflow-y-auto h-[70%]">
+          {cart.length > 0 ? (
+            cart.map((item) => (
+              <div className="flex w-full space-x-2 sm:space-x-4 bg-base- p-2 pr-20 border-b-2 border-gray-400">
                 <img
-                  src="https://plus.unsplash.com/premium_photo-1670983858433-8ef0f54f0c71?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWVuJTIwc2hvZXN8ZW58MHx8MHx8fDA%3D&fm=jpg&q=60&w=3000"
-                  alt={item.name}
-                  className="w-16 h-16 object-cover rounded"
+                  className="flex-shrink-0 object-cover w-15 h-15 dark:border- rounded outline-none  dark:bg-gray-500"
+                  src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-1.2.1&amp;ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80"
+                  alt="Polaroid camera"
                 />
-                <div className="flex-1">
-                  <h3 className="text-sm font-semibold">{item.name}</h3>
-                  <p className="text-gray-500 text-sm">
-                    ${item.discountPrice || item.price}
-                  </p>
+                <div className="flex flex-col justify-between w-full pb-4">
+                  <div className="flex justify-between w-full pb-2 space-x-2">
+                    <div className="space-y-1">
+                      <h3 className=" font-semibold leading-snug ">
+                        {item.name}
+                      </h3>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-lg font-semibold">৳{item.price}</div>
+                    </div>
+                  </div>
+                  <div className="flex text-sm divide-x">
+                    <button
+                      onClick={() => removeFromCart(item.id)}
+                      type="button"
+                      className="flex items-center px-1 py-1 pl-0 space-x-1"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 512 512"
+                        className="w-4 h-4 fill-current"
+                      >
+                        <path d="M96,472a23.82,23.82,0,0,0,23.579,24H392.421A23.82,23.82,0,0,0,416,472V152H96Zm32-288H384V464H128Z"></path>
+                        <rect width="32" height="200" x="168" y="216"></rect>
+                        <rect width="32" height="200" x="240" y="216"></rect>
+                        <rect width="32" height="200" x="312" y="216"></rect>
+                        <path d="M328,88V40c0-13.458-9.488-24-21.6-24H205.6C193.488,16,184,26.542,184,40V88H64v32H448V88ZM216,48h80V88H216Z"></path>
+                      </svg>
+                      <span className="text-">Remove</span>
+                    </button>
+                    {/* Count */}
+                    <div className="flex items-center justify-between  border-gray-400 mx-2 border">
+                      <div className="flex items-center gap-4 ">
+                        <button
+                          onClick={() => decreaseQty(item.id)}
+                          className="pl-3 py-1  text-lg"
+                        >
+                          -
+                        </button>
+                        <span className="text-lg font-semibold border-x px-3 border-gray-400">
+                          {item.quantity}
+                        </span>
+                        <button
+                          onClick={() => increaseQty(item.id)}
+                          className="pr-3 py-1   text-lg"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <button onClick={() => removeFromCart(item.id)}>
-                  <MdDeleteForever color="red" size={24} />
-                </button>
               </div>
             ))
           ) : (
-            <p className="text-gray-500 text-center mt-10">
-              Your cart is empty 🛒
+            <p className="text-center text-gray-500 mt-10">
+              Your cart is empty 🛍️
             </p>
           )}
+        </div>
 
-<div className="border mt-20"></div>
-          <div className="mt-6 text-right">
-            <h2 className="text-xl font-semibold">Total: ${total}</h2>
-            <p>Taxes, discounts and shipping calculated at checkout.</p>
+        {/* Footer */}
+        <div className=" border-t space-y-2 px-2">
+          <div className="mt-2 text-end">
+            <h2 className="text-xl font-semibold">Total amount: ৳{totalPrice}</h2>
+            <p>(Not including taxes and shipping costs)</p>
+          </div>
+          <div className=" flex flex-col gap-2 mt-13">
+            <button className="w-full btn btn-neutral text-lg">
+              Checkout
+            </button>
             <button
-              onClick={clearCart}
-              className="btn btn-neutral w-full mt-2"
+              onClick={onClose}
+              className="w-full btn btn-neutral btn-outline text-lg"
             >
-              Check Out
+              Continue Shopping
             </button>
           </div>
         </div>
