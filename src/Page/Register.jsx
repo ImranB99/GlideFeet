@@ -42,7 +42,7 @@ const Register = () => {
   };
   return (
     <div>
-      <div className="flex mx-auto bg-base-300 flex-col max-w-md p-6 rounded-md shadow-md sm:p-10">
+      <div className="flex mx-auto  flex-col max-w-md p-6 rounded-md  sm:p-10">
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl font-bold">Register</h1>
           <p className="text-sm ">Register to create your account</p>
@@ -111,7 +111,7 @@ const Register = () => {
             <div>
               <button
                 type="submit"
-                className="w-full px-8 py-3 font-semibold rounded-md bg-base-100 btn h-full"
+                className="btn btn-neutral w-full"
               >
                 Submit
               </button>
@@ -119,7 +119,7 @@ const Register = () => {
             <p className="px-6 text-sm text-center dark:text-gray-600">
               Already have an account?
               <Link
-                to="login"
+                to="/login"
                 rel="noopener noreferrer"
                 href="#"
                 className="hover:underline text-blue-600 font-semibold ml-1"

@@ -17,7 +17,7 @@ const ProductDetails = () => {
     setProduct(findProduct);
   }, [data, id]);
 
-  const { Name, DiscountPrice, OfficialPrice, Review, Color } = product;
+  const { Name,Image, DiscountPrice, OfficialPrice, Review, Color } = product;
 
   const increaseCount = () => {
     if (count < 10) setCount(count + 1);
@@ -43,7 +43,7 @@ const ProductDetails = () => {
         <figure className="lg:w-[520px] lg:h-[520px] md:w-[440px] md:h-[440px] w-[367px]">
           <img
             className="h-fit"
-            src="https://plus.unsplash.com/premium_photo-1670983858433-8ef0f54f0c71?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWVuJTIwc2hvZXN8ZW58MHx8MHx8fDA%3D&fm=jpg&q=60&w=3000"
+            src={Image}
             alt="Album"
           />
         </figure>

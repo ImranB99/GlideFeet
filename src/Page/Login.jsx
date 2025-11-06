@@ -18,8 +18,8 @@ const Login = () => {
         // Signed in
         const user = res.user;
         // ...
-       const from = location.state?.from?.pathname || "/";
-      navigate(from, { replace: true });
+        const from = location.state?.from?.pathname || "/";
+        navigate(from, { replace: true });
         console.log(user);
       })
       .catch((error) => {
@@ -41,7 +41,7 @@ const Login = () => {
   };
   return (
     <div>
-      <div className="flex mx-auto bg-base-300 flex-col max-w-md p-6 rounded-md shadow-md sm:p-10">
+      <div className="flex mx-auto  flex-col max-w-md p-6 rounded-md  sm:p-10">
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl font-bold">Login</h1>
           <p className="text-sm ">Login to access your account</p>
@@ -113,7 +113,7 @@ const Login = () => {
             <div>
               <button
                 type="submit"
-                className="w-full px-8 py-3 font-semibold rounded-md bg-base-100 btn h-full"
+                className="w-full px-8 py-3 font-semibold rounded-md 00 btn btn-neutral h-full"
               >
                 Login
               </button>

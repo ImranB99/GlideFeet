@@ -24,7 +24,7 @@ const SearchResult = () => {
   }, [query]);
 
   return (
-    <div>
+    <div className="w-11/12 mx-auto">
       <h2 className="text-lx">Search Result for "{query}"</h2>
       {products.length > 0 ? (
         <div className=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 justify-self-center md:gap-5 gap-3 mt-2">
@@ -32,7 +32,7 @@ const SearchResult = () => {
             <Link to={`/details/${product.id}`}>
               <img
                 className="w-[183px] h-[183px] md:w-[287px] md:h-[287px] lg:w-[260px] lg:h-[260px]"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPb2g5JzD8rKBw6653ojWMmWldi547sPYwjw&s"
+                src={product.Image}
                 alt=""
               />
               <h2>{product.Name}</h2>
