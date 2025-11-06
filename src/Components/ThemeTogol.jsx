@@ -15,7 +15,7 @@ export default function ThemeToggle() {
 
   return (
     <button className="flex justify-center" onClick={toggle}>
-      {theme === "light" ? <MdDarkMode size={24} />  : <MdLightMode size={24}/>}
+      {theme === "light" ? "On"  : "Off"}
     </button>
   );
 }

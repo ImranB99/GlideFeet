@@ -9,7 +9,7 @@ const LeftAside = ({ colorFilter, setColorFilter = {} }) => {
   ];
 
   return (
-    <div className="p-4 w-11/12 sticky z-50 top-12">
+    <div className="p-4 w-11/12 sticky z- top-12">
       <h2 className="text-lg font-semibold mb-1">Filter By Color</h2>
       <div className="border mb-6"></div>
       <div className="grid md:grid-cols-1 grid-cols-2  gap-3">

@@ -7,6 +7,10 @@ import Blog from "../Page/Blog";
 import ProductDetails from "../Components/ProductCard/ProductDetails";
 import SearchResult from "../Components/SearchSection/SearchResult";
 import Cart from "../Components/ProductCard/Cart";
+import Login from "../Page/Login";
+import Register from "../Page/Register";
+import PrivateRouter from "./PrivateRouter";
+import Profile from "../Page/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -34,7 +38,11 @@ export const router = createBrowserRouter([
       {
         path: "/details/:id",
         loader: () => fetch("/product.json"),
-        Component: ProductDetails,
+        element: (
+          <PrivateRouter>
+            <ProductDetails />
+          </PrivateRouter>
+        ),
       },
       {
         path: "/blog",
@@ -43,9 +51,18 @@ export const router = createBrowserRouter([
       {
         path: "/search",
         Component: SearchResult,
-      },{
-        path:"/cart",
-        Component:Cart
+      },
+      {
+        path: "/login",
+        Component: Login,
+      },
+      {
+        path: "/register",
+        Component: Register,
+      },
+      {
+        path:"/profile",
+        Component: Profile
       }
     ],
   },

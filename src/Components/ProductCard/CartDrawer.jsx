@@ -65,7 +65,7 @@ const CartDrawer = ({ onClose }) => {
                         <rect width="32" height="200" x="312" y="216"></rect>
                         <path d="M328,88V40c0-13.458-9.488-24-21.6-24H205.6C193.488,16,184,26.542,184,40V88H64v32H448V88ZM216,48h80V88H216Z"></path>
                       </svg>
-                      <span className="text-">Remove</span>
+                      <span className="">Remove</span>
                     </button>
                     {/* Count */}
                     <div className="flex items-center justify-between  border-gray-400 mx-2 border">

@@ -113,12 +113,12 @@ const Shop = () => {
           </div>
 
           {/* === Filter For small Device === */}
-          {/* <div className="md:hidden">
+          <div className="md:hidden">
             <LeftAside
               colorFilter={colorFilter}
               setColorFilter={setColorFilter}
             />
-          </div> */}
+          </div>
 
           {/* === Card === */}
           {filteredProducts.length > 1 ? (
